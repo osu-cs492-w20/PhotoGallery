@@ -6,7 +6,9 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -42,7 +44,8 @@ public class MainActivity extends AppCompatActivity implements FlickrPhotosAdapt
         mPhotosRV.setAdapter(mAdapter);
 
         mPhotosRV.setHasFixedSize(true);
-        mPhotosRV.setLayoutManager(new LinearLayoutManager(this));
+        mPhotosRV.setLayoutManager(new StaggeredGridLayoutManager(NUM_PHOTO_COLUMNS,
+                StaggeredGridLayoutManager.VERTICAL));
 
         mViewModel = new ViewModelProvider(this).get(FlickrExploreViewModel.class);
 
@@ -76,5 +79,7 @@ public class MainActivity extends AppCompatActivity implements FlickrPhotosAdapt
     @Override
     public void onPhotoClicked(int idx) {
         Log.d(TAG, "photo clicked, index: " + idx);
+        Intent intent = new Intent(this, PhotoViewActivity.class);
+        startActivity(intent);
     }
 }

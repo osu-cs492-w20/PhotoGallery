@@ -3,4 +3,8 @@
     <string name="loading_error_message">We couldn\'t connect to Flickr. Check your internet connection and try again.</string>
 
     <string name="by_owner">by %1$s on Flickr</string>
+
+    <string name="title_activity_photo_view">PhotoViewActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

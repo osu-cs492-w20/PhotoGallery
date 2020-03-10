@@ -1,11 +1,14 @@
 package com.example.android.photogallery;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.android.photogallery.data.FlickrPhoto;
 
 import java.util.List;
@@ -70,6 +73,13 @@ public class FlickrPhotosAdapter extends RecyclerView.Adapter<FlickrPhotosAdapte
 
             String byOwner = mPhotoOwnerTV.getContext().getString(R.string.by_owner, photo.ownername);
             mPhotoOwnerTV.setText(byOwner);
+
+            Glide.with(mPhotoIV)
+                    .load(photo.url_m)
+                    .apply(RequestOptions.placeholderOf(
+                            new SizedColorDrawable(Color.WHITE, photo.width_m, photo.height_m)
+                    ))
+                    .into(mPhotoIV);
         }
 
         @Override
